@@ -1,0 +1,174 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  /* 溢出隐藏 */
+  overflow: hidden;
+  /* 背景颜色   椭圆径向渐变  圆心在底部*/
+  background: radial-gradient(ellipse at bottom, #2f3a46 0%,
+   #090a0f 100%);
+}
+
+/*全体的星星 */
+.night {
+  /* 相对定位 */
+  position: relative;
+  /* 位置 */
+  top: -250px;
+  right: -60px;
+  width: 100%;
+  height: 100%;
+  /* 星星的角度 */
+  transform: rotateZ(135deg);
+}
+
+/* 星星的样式 */
+.shooting-star {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 2px;
+  background: linear-gradient(-45deg, #5f91ff, rgba(0, 0, 255, 0));
+  /* 外阴影 */
+  filter: drop-shadow(0 0 6px #699bff);
+  border-radius: 1000px;
+  /* 执行动画： 动画名 运动时间 快变慢  循环播放 */
+  animation: tail 3000ms ease-in-out infinite,
+    shooting 3000ms ease-in-out infinite;
+}
+
+/* 星星的 | 闪烁 */
+.shooting-star::before {
+  content: '';
+  position: absolute;
+  top: calc(50% - 1px);
+  right: 0;
+  height: 2px;
+  background: linear-gradient(-45deg, rgba(0, 0, 255, 0),
+      #5f91ff, rgba(0, 0, 255, 0));
+  transform: translateX(50%) rotateZ(45deg);
+  animation: shining 3000ms ease-in-out infinite;
+}
+
+/* 星星的 一 闪烁 */
+.shooting-star::after {
+  content: '';
+  position: absolute;
+  top: calc(50% - 1px);
+  right: 0;
+  height: 2px;
+  background: linear-gradient(-45deg, rgba(0, 0, 255, 0),
+      #5f91ff, rgba(0, 0, 255, 0));
+  transform: translateX(50%) rotateZ(-45deg);
+  animation: shining 3000ms ease-in-out infinite;
+}
+
+/* 全体的动画 */
+@keyframes shooting {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(300px);
+  }
+}
+
+/* 星星残影动画 */
+@keyframes tail {
+  0% {
+    width: 0;
+  }
+
+  30% {
+    width: 100px;
+  }
+
+  100% {
+    width: 0;
+  }
+}
+
+/* 星星划过动画*/
+@keyframes shining {
+  0% {
+    width: 0;
+  }
+
+  50% {
+    width: 30px;
+  }
+
+  100% {
+    width: 0;
+  }
+} 
+
+/* 星星的动画及位置 */
+.shooting-star:nth-child(1) {
+  top: calc(50% - 10px);
+  left: calc(50% - 230px);
+  animation-delay: 4321ms;
+
+}
+
+.shooting-star:nth-child(1)::before,
+.shooting-star:nth-child(1)::after {
+  animation-delay: 4321ms;
+}
+
+.shooting-star:nth-child(2) {
+  top: calc(50% - 60px);
+  left: calc(50% - 170px);
+  animation-delay: 700ms;
+}
+
+.shooting-star:nth-child(2)::before,
+.shooting-star:nth-child(2)::after {
+  animation-delay: 700ms;
+}
+
+.shooting-star:nth-child(3) {
+  top: calc(50% + 60px);
+  left: calc(50% + 170px);
+  animation-delay: 100ms;
+}
+
+.shooting-star:nth-child(3)::before,
+.shooting-star:nth-child(3)::after {
+  animation-delay: 100ms;
+}
+
+.shooting-star:nth-child(4) {
+  top: calc(50% + 160px);
+  left: calc(50% + 370px);
+  animation-delay: 6000ms;
+}
+
+.shooting-star:nth-child(4)::before,
+.shooting-star:nth-child(4)::after {
+  animation-delay: 6000ms;
+}
+
+.shooting-star:nth-child(5) {
+  top: calc(50% + 550px);
+  left: calc(50% + 130px);
+  animation-delay: 1356ms;
+}
+
+.shooting-star:nth-child(5)::before,
+.shooting-star:nth-child(5)::after {
+  animation-delay: 1356ms;
+}
+
+.shooting-star:nth-child(6) {
+  top: calc(50% - 220px);
+  left: calc(50% - 70px);
+  animation-delay: 2340ms;
+}
+
+.shooting-star:nth-child(6)::before,
+.shooting-star:nth-child(6)::after {
+  animation-delay: 2340ms;
+}
